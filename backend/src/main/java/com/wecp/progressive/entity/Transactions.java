@@ -8,21 +8,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+// @Entity
 public class Transactions {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer transactionId;
-    private Integer accountId;
-    private Double amount;
+    // @Id
+    // @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int transactionId;
+    private int accountId;
+    private double amount;
     private Date transactionDate;
     private String transactionType;
-    @ManyToOne
-    private Accounts accounts;
+    // @ManyToOne
+    // private Accounts accounts;
     public Transactions() {
     }
     
-    public Transactions(Integer transactionId, Integer accountId, Double amount, Date transactionDate,
+    public Transactions(int transactionId, int accountId, double amount, Date transactionDate,
             String transactionType) {
         this.transactionId = transactionId;
         this.accountId = accountId;
@@ -31,27 +31,27 @@ public class Transactions {
         this.transactionType = transactionType;
     }
 
-    public Integer getTransactionId() {
+    public int getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(Integer transactionId) {
+    public void setTransactionId(int transactionId) {
         this.transactionId = transactionId;
     }
 
-    public Integer getAccountId() {
+    public int getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(Integer accountId) {
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -71,13 +71,13 @@ public class Transactions {
         this.transactionType = transactionType;
     }
 
-    public Accounts getAccounts() {
-        return accounts;
-    }
+    // public Accounts getAccounts() {
+    //     return accounts;
+    // }
 
-    public void setAccounts(Accounts accounts) {
-        this.accounts = accounts;
-    }
+    // public void setAccounts(Accounts accounts) {
+    //     this.accounts = accounts;
+    // }
 
     
      

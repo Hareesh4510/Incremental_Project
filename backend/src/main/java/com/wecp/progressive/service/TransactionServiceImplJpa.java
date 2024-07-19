@@ -1,5 +1,6 @@
 package com.wecp.progressive.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,45 +12,40 @@ import com.wecp.progressive.repository.CustomerRepository;
 import com.wecp.progressive.repository.TransactionRepository;
 
 @Service
-public class TransactionServiceImplJpa {
+public class TransactionServiceImplJpa implements TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
     @Autowired
     private CustomerRepository customerRepository;
-
-    public List<Transactions>getAllTransactions()
-    {
+    @Override
+    public List<Transactions> getAllTransactions() throws SQLException {
         return transactionRepository.findAll();
     }
-    public Transactions getTransactionById(int transactionId)
-    {
+    @Override
+    public Transactions getTransactionById(int transactionId) throws SQLException {
         return transactionRepository.findById(transactionId).get();
     }
-    public Integer addTransaction (Transactions transaction)
-    {
+    @Override
+    public int addTransaction(Transactions transaction) throws SQLException {
         transactionRepository.save(transaction);
         return transaction.getTransactionId();
+
     }
-    public void updateTransaction(int transactionId, Transactions transaction)
-    {
-        Transactions t=transactionRepository.findById(transactionId).get();
-        if(t!=null)
-        {
-            transactionRepository.save(transaction);
-        }
+    @Override
+    public void updateTransaction(Transactions transaction) throws SQLException {
+        transactionRepository.save(transaction);
     }
-    public void deleteTransaction(int transactionId)
-    {
+    @Override
+    public void deleteTransaction(int transactionId) throws SQLException {
         transactionRepository.deleteById(transactionId);
     }
-    public List<Transactions>getAllTransactionsByCustomerId(Integer customerId)
-    {
-        Customers c =customerRepository.findById(customerId).get();
-        if(c!=null)
-        {
-            return transactionRepository.findAll();
-        }
-        return null;
+    @Override
+    public List<Transactions> getTransactionsByCustomerId(int customerId) throws SQLException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTransactionsByCustomerId'");
     }
+    
+
+    
 
 }

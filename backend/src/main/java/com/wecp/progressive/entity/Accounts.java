@@ -1,71 +1,49 @@
 package com.wecp.progressive.entity;
 
-import java.util.List;
+public class Accounts implements Comparable<Accounts> {
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+    private int accountId;
+    private int customerId;
+    private double balance;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+    public Accounts() {
+        // constrcutor
+    }
 
-@Entity
-public class Accounts {
-    @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer accountId;
-    private Integer customerId;
-    private Double balance;
-    
-    @OneToMany(mappedBy = "accounts",cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Transactions>transactions;
-
-    @ManyToOne
-    private Customers customers;
-    
-    public Accounts(Integer accountId, Integer customerId, Double balance) {
+    public Accounts(int accountId, int customerId, double balance) {
         this.accountId = accountId;
         this.customerId = customerId;
         this.balance = balance;
     }
-    public Accounts() {
-    }
-    
-    public Integer getAccountId() {
+
+    // Getters and setters
+    public int getAccountId() {
         return accountId;
     }
-    public void setAccountId(Integer accountId) {
+
+    public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
-    public Integer getCustomerId() {
+
+    public int getCustomerId() {
         return customerId;
     }
-    public void setCustomerId(Integer customerId) {
+
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-    public Double getBalance() {
+
+    public double getBalance() {
         return balance;
     }
-    public void setBalance(Double balance) {
+
+    public void setBalance(double balance) {
         this.balance = balance;
     }
-    public List<Transactions> getTransactions() {
-        return transactions;
-    }
-    public void setTransactions(List<Transactions> transactions) {
-        this.transactions = transactions;
-    }
-    public Customers getCustomers() {
-        return customers;
-    }
-    public void setCustomers(Customers customers) {
-        this.customers = customers;
-    }
-    
-    
 
+    @Override
+    public int compareTo(Accounts otherAccounts) {
+        // Implement comparison logic based on account balance
+        return Double.compare(this.getBalance(), otherAccounts.getBalance());
+    }
 }
