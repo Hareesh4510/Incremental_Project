@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { Account } from '../bank/types/Account';
 import { CustomerTS } from '../../types/tstypes/Customerts';
-import { of } from 'rxjs';
- 
+
 @Component({
   selector: 'app-customersample',
   standalone: true,
@@ -11,7 +10,7 @@ import { of } from 'rxjs';
   styleUrls: ['./customersample.component.css']
 })
 export class CustomersampleComponent {
- 
-  customer : CustomerTS = new CustomerTS("Abhishek","abhishek@gmail.com","Abhishek1061", "abcdefg", "Developer", "2");
- 
+  // account:Cu = new Account("1",400,"1");
+  // name: string, email: string, username: string, password: string, role: string, customerId?:string)
+   customer:CustomerTS = new CustomerTS("jhon","jhon@gmail.com","jhonuser","User","1");
 }
